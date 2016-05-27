@@ -88,7 +88,7 @@
 }
 
 
-
+//刷新view
 -(void)reInitViewWithSender:(id)sender{
     [self drawTriangleView];
     
@@ -102,6 +102,7 @@
     [self adaptationBackground];
 }
 
+//显示view
 -(void)showView{
     [self reInitViewWithSender:clickSender];
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
@@ -134,6 +135,8 @@
     }
 }
 
+
+//关闭view
 -(void)closeView{
     
     switch (nowTriangleDir) {
@@ -271,6 +274,7 @@
     }
 }
 
+//适配背景
 -(void)adaptationBackground{
     //是否设置了显示背景
     if(self.delegate && [self.delegate respondsToSelector:@selector(showBackground)]&&![self.delegate showBackground]){//不显示背景
