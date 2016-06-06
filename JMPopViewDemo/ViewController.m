@@ -36,7 +36,7 @@
 //required
 - (UIView *)contentViewOfJMPopView:(JMPopView *)popview{
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 250, 200)];
-    //        [view.layer setCornerRadius:4.0];
+    //        [view.layer setCornerRadius:2.0];
     //        [view.layer setMasksToBounds:YES];
     view.backgroundColor=[UIColor whiteColor];
     return view;

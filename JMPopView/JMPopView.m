@@ -15,7 +15,7 @@
 @interface JMPopView(){
     UIButton *backgroundBtn;//背景btn，默认点击消失
     UIView *triangleView;//小三角
-    UIView *contentBackgroundView;//主内容框，默认无色
+    UIView *contentBackgroundView;//主内容框 // default clearColor
     UIView *contentView;//内容(contentBackgroundView的子view）
     id clickSender;//箭头的目标
     TriangleDirection triangleDirection;//用户箭头方向
@@ -110,11 +110,16 @@
     
     CGRect contentBackgroundViewFrame=contentBackgroundView.frame;
     
+    CFTimeInterval duration=0.2;
+    if([self.delegate respondsToSelector:@selector(animationDuration)]){
+        duration=[self.delegate animationDuration];
+    }
+    
     
     switch (nowTriangleDir) {
         case up:{
             contentBackgroundView.frame=CGRectMake(contentBackgroundView.frame.origin.x, contentBackgroundView.frame.origin.y, contentBackgroundView.frame.size.width, 0);
-            [UIView animateWithDuration:0.2 animations:^{
+            [UIView animateWithDuration:duration animations:^{
                 contentBackgroundView.frame=contentBackgroundViewFrame;
             }completion:^(BOOL finished) {
                 
@@ -123,7 +128,7 @@
             break;
         case down:{
             contentBackgroundView.frame=CGRectMake(contentBackgroundView.frame.origin.x, contentBackgroundView.frame.origin.y+contentBackgroundView.frame.size.height, contentBackgroundView.frame.size.width, 0);
-            [UIView animateWithDuration:0.2 animations:^{
+            [UIView animateWithDuration:duration animations:^{
                 contentBackgroundView.frame=contentBackgroundViewFrame;
             }completion:^(BOOL finished) {
                 
@@ -139,9 +144,14 @@
 //关闭view
 -(void)closeView{
     
+    CFTimeInterval duration=0.2;
+    if([self.delegate respondsToSelector:@selector(animationDuration)]){
+        duration=[self.delegate animationDuration];
+    }
+    
     switch (nowTriangleDir) {
         case up:{
-            [UIView animateWithDuration:0.2 animations:^{
+            [UIView animateWithDuration:duration animations:^{
                 contentBackgroundView.frame=CGRectMake(contentBackgroundView.frame.origin.x, contentBackgroundView.frame.origin.y, contentBackgroundView.frame.size.width, 0);
             }completion:^(BOOL finished) {
                 [self removeFromSuperview];
@@ -149,7 +159,7 @@
         }
             break;
         case down:{
-            [UIView animateWithDuration:0.2 animations:^{
+            [UIView animateWithDuration:duration animations:^{
                 contentBackgroundView.frame=CGRectMake(contentBackgroundView.frame.origin.x, contentBackgroundView.frame.origin.y+contentBackgroundView.frame.size.height, contentBackgroundView.frame.size.width, 0);
             }completion:^(BOOL finished) {
                 [self removeFromSuperview];

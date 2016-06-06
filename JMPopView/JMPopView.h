@@ -45,10 +45,10 @@ typedef enum {
 //返回箭头方向
 -(TriangleDirection)triangleViewDirection;
 
-//返回箭头颜色
+//返回箭头颜色,默认白色
 -(UIColor *)colorOfTriangleView;
 
-//返回箭头的大小
+//返回箭头的大小，默认(10,10)
 -(CGSize)sizeOfTriangleView;
 
 
@@ -56,12 +56,14 @@ typedef enum {
 /*
  *-------背景属性---------
  */
-//是否显示内容区外的背景
+//是否显示内容区外的背景，默认yes
 -(BOOL)showBackground;
 
 //返回内容区外的背景颜色
 -(UIColor *)colorOfBackground;
 
+//返回动画持续时间，默认0.2s
+-(NSTimeInterval)animationDuration;
 
 @end
 
